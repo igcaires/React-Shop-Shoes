@@ -20,10 +20,10 @@ class Home extends Component {
     this.setState({ products: response.data });
   }
 
-  handleAddProduct = product => {
-    const { addToCart } = this.props;
+  handleAddProduct = id => {
+    const { addToCartRequest } = this.props;
 
-    addToCart(product);
+    addToCartRequest(id);
   }
 
   render() {
@@ -38,7 +38,7 @@ class Home extends Component {
             <strong>{product.title}</strong>
             <span>{formatPrice(product.price)}</span>
     
-            <button type="button" onClick={() => this.handleAddProduct(product)}>
+            <button type="button" onClick={() => this.handleAddProduct(product.id)}>
               <div>
                 <MdAddShoppingCart size={16} color="#fff" />{' '} {amount[product.id] || 0}
               </div>
